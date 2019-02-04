@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- <link rel="stylesheet" href="assets/css/reset.css"> -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+        crossorigin="anonymous">
+    <title>Word Guess Game</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+    <header>
+        <p id="pressAny">Press any key to start...</p>
+        <h1>Lets know the world</h1>
+    </header>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h2 id="citiName"></h2>
+            </div>
+            <div class="col">
+                <div class="row">
+                    <div class="col text-right">
+                        <p>Wins: <span id="scoreWins">0</span></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col text-right">
+                        <p>Remaining letters: <span id="remainingLetters">12</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h1 id="message"></h1>
+                <img id="imgCity" alt="">
+                <p id="imgText"></p>
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col text-center">
+                <div>Discover the most beautiful cities on the world... (Choose the letter to complete the word)</div>
+                <div id="currentWord"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col text-left missingLetters">
+                <p>You have chosen the letters: <span id="missingLetters"></span></p>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <footer>Copyright 2019© Camilo Agudelo</footer>
+            </div>
+        </div>
+
+    </div>
+    <script src="assets/javascript/game.js"></script>
+
+</body>
+
+</html>
