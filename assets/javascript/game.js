@@ -365,7 +365,7 @@ function GetCity() {
     console.log(_cityResult.word);
 }
 
-function Start() {
+function start() {
     GetCity();
 
     // Add city to array control no duplicate
@@ -373,10 +373,10 @@ function Start() {
 
     if (_citiesDone.indexOf(_cityResult.id) !== -1) {
         // catch html elements
-        var _currentWordwordSpan = document.getElementById("currentWord");
+        var _currentWordDiv = document.getElementById("currentWord");
         var _imgCityImg = document.getElementById("imgCity");
         var _missingLettersSpan = document.getElementById("missingLetters");
-        var _scoreWinsSpan = document.getElementById("scoreWins");
+        // var _scoreWinsSpan = document.getElementById("scoreWins");
         var _remainingLettersSpan = document.getElementById("remainingLetters");
         var _messageH1 = document.getElementById("message");
         var _pressAnyP = document.getElementById("pressAny");
@@ -386,14 +386,14 @@ function Start() {
         // _imgTextP.textContent = _cityResult.description;
         _imgCityImg.src = _cityResult.imgUrl;
         _missingLettersSpan.textContent = "";
-        _currentWordwordSpan.textContent = "";
-        _scoreWinsSpan.textContent = "0";
+        _currentWordDiv.textContent = "";
+        $("#scoreWins").text(_winsCounter);
         _remainingLettersSpan.textContent = "12";
         _messageH1.style.display = "none";
         _pressAnyP.textContent = "Press any key to start...";
         _remainingCounter = 12;
         DrawCurrentWord();
-        
+
         // _citiNameH1.textContent = _cityResult.name;
     }
 }
@@ -424,35 +424,92 @@ function Restart() {
 }
 
 function DrawCurrentWord() {
-    var _currentWordwordDiv = document.getElementById("currentWord");
-    
-    str = Array.from(_cityResult.word.toString());
-    str.forEach(function (_item) {        
 
-        if (_item == " ") {
-            _currentWordwordDiv.textContent += " ";
+    var _currentWordDiv = document.getElementById("currentWord");
+    var _divCount = 0;
+    str = Array.from(_cityResult.word.toString());
+
+    str.forEach(function (_item) {
+        // insert divs
+        if (_item != " ") {
+            var _div = document.createElement("div");
+            _div.className = "divWord";
+            _div.id = "divWord" + _divCount;
+            _currentWordDiv.appendChild(_div);
+            _divCount++;
         }
         else {
-            _currentWordwordDiv.style.fontSize = "30px";
-            _currentWordwordDiv.textContent += "_";
+            var _div = document.createElement("div");
+            _div.className = "divWordNB";
+            _div.id = "divWord" + _divCount;
+            _currentWordDiv.appendChild(_div);
+            _divCount++;
         }
     });
 }
 
+var _wordControl = "";
+
+// fill the div with _keyPressed by index
+function fillCurrentWord(_keyPressed, _index) {
+
+    $("#divWord" + _index).text(_keyPressed.toUpperCase());
+
+}
+
+var _currentWordDiv = document.getElementById("currentWord");
+ary = Array.from(_currentWordDiv.textContent);
+
+var _newWord = new Array(ary.length);
 // console.log(GetCityById(1));
+
+// event triggers when a key is pressed
 document.onkeyup = (function (event) {
-    _key = event.key.toLocaleLowerCase();
+
+    var _currentWordDiv = document.getElementById("currentWord");
+    ary = Array.from(_currentWordDiv.textContent);
+    console.log(ary);
+
+    _key = event.key.toLowerCase();
     // Control the inicial key press to start, it will call the start() function only when the page reload
     if (_start !== 0) {
-        // Delete content from start
 
         // If the pressed key is correct insert in div current word else insert in missing letters
-        if (_cityResult.word.indexOf(_key) !== -1) {
-        
+        var _index = _cityResult.word.indexOf(_key);
+        console.log(_cityResult.word);
+        console.log(_index);
 
-            // var _currentWordwordDiv = document.getElementById("currentWord");
-            // _currentWordwordDiv.textContent += _key;
+        if (_index !== -1) {
 
+            for (var _i = 0; _i < _cityResult.word.length; _i++) {
+                //Ask if the key pressed is already in the missing letters span
+                if (_cityResult.word[_i].toString() === _key) {
+                    if (_wordControl.length < _cityResult.word.length) {
+                        if ($("#divWord" + _i).text().indexOf(_key.toUpperCase()) === -1) {
+                            fillCurrentWord(_key, _i);
+
+                        }
+                        else {
+                            //Play sound when the letter is already in the text
+                            var snd = new Audio('assets/Audio/incorrect.mp3');
+                            snd.play();
+                        }
+                        _wordControl += _key.toUpperCase();
+                    }
+                    else {
+
+
+                        win();
+
+                        // start();
+                        // _start = 1;
+                        // _wordControl = "";
+                        // $("#pressAny").text("");
+                        // $("#missingLetters").text("");
+
+                    }
+                }
+            }
         }
         else {
 
@@ -460,13 +517,13 @@ document.onkeyup = (function (event) {
                 var _missingLettersSpan = document.getElementById("missingLetters");
 
                 //Ask if the key pressed is already in the missing letters span
-                if (_missingLettersSpan.textContent.indexOf(_key) === -1) {
-                    _missingLettersSpan.textContent += _key;
+                if (_missingLettersSpan.textContent.indexOf(_key.toUpperCase()) === -1) {
+                    _missingLettersSpan.textContent += _key.toUpperCase();
                     _remainingCounter--;
                 }
                 else {
                     //Play sound when the letter is already in the text
-                    var snd = new Audio('assets/Audio/incorrect.mp3');
+                    var snd = new Audio('assets/Audio/nope.mp3');
                     snd.play();
                 }
 
@@ -475,7 +532,7 @@ document.onkeyup = (function (event) {
             }
             else {
 
-                Start();
+                start();
                 var _messageH1 = document.getElementById("message");
                 _messageH1.textContent = 'You lose';
                 _messageH1.style.display = "block";
@@ -487,10 +544,21 @@ document.onkeyup = (function (event) {
         }
     }
     else {
-        Start();
-        _start = 1;        
-        var _pressAnyP = document.getElementById("pressAny");
-        _pressAnyP.textContent = "";
+        start();
+        _start = 1;
+        $("#pressAny").text("");
+    }
+
+    function win() {
+        var _messageH1 = document.getElementById("message");
+        _messageH1.textContent = 'You Win';
+        // _messageH1.style.display = "block";
+        _winsCounter++;
+        $("#scoreWins").text(_winsCounter);
+        //Play sound when the letter is already in the text
+        var snd = new Audio('assets/Audio/win.mp3');
+        snd.play();
+        $("#citiName").text(_cityResult.name);
     }
 
 });

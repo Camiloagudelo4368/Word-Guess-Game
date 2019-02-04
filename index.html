@@ -7,12 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+
         crossorigin="anonymous">
     <title>Word Guess Game</title>
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <header>
         <p id="pressAny">Press any key to start...</p>
         <h1>Lets know the world</h1>
@@ -42,16 +44,17 @@
                 <p id="imgText"></p>
             </div>
         </div>
-        <div class="row text-center">
-            <div class="col text-center">
-                <div>Discover the most beautiful cities on the world... (Choose the letter to complete the word)</div>
-                <div id="currentWord"></div>
+        <div class="row">
+            <div class="col-12">
+                <p>Discover the most beautiful cities on the world... <em class="small">(Choose the letter to complete
+                        the
+                        word)</em></p>
             </div>
+            <div id="currentWord"></div>
         </div>
         <div class="row">
             <div class="col text-left missingLetters">
                 <p>You have chosen the letters: <span id="missingLetters"></span></p>
-
             </div>
         </div>
         <div class="row">
