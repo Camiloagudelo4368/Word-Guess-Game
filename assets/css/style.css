@@ -73,6 +73,17 @@ header{
     margin-right:10px;
 }
 
+#imgText{
+    position: absolute;
+    bottom: 10px;
+    left:0PX;
+    margin: 13px;
+    background-color: white;
+    opacity: 0.7;
+    padding: 10px;
+    border-radius: 20px;
+}
+
 footer{
     text-align: center;
     background-color:#d0d3d7;
