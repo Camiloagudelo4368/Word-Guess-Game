@@ -396,8 +396,6 @@ function GetCity() {
     // else{
     //     GetCity();
     // }
-
-    
     
     console.log(_randomId);
     console.log(_cityResult.word);
@@ -526,7 +524,7 @@ function win() {
     $("#pressAny").text("Press any key to continue...");
     _winFlag = 1;
     //Play sound when the letter is already in the text
-    var snd = new Audio('assets/Audio/win.mp3');
+    var snd = new Audio('assets/audio/win.mp3');
     snd.play();
 }
 
@@ -553,7 +551,7 @@ document.onkeyup = (function (event) {
             if (_index !== -1) {
                 // ask if the pressed key exist in the divCurrentWord
                 if ($("#currentWord").text().indexOf(_key.toUpperCase()) !== -1) {
-                    var snd = new Audio('assets/Audio/incorrect.mp3');
+                    var snd = new Audio('assets/audio/incorrect.mp3');
                     snd.play();
                 }
                 else {
@@ -582,7 +580,7 @@ document.onkeyup = (function (event) {
                     }
                     else {
                         //Play sound when the letter is already in the text
-                        var snd = new Audio('assets/Audio/nope.mp3');
+                        var snd = new Audio('assets/audio/nope.mp3');
                         snd.play();
                     }
 
