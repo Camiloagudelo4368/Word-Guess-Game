@@ -325,7 +325,7 @@ _city.name = "Stockholm, Sweden";
 _city.word = "Stockholm";
 _city.key = "STOCKHOLM";
 _city.description = 'With its charming historic alleyways and a multitude of islands that lead many to dub it “the Venice of the north," Stockholm is one of the world’s most beautiful capitals. (It’s also the cultural, political, media, and economic center of Sweden.) —K.L.';
-_city.imgUrl = 'assets/images/cities/Stockholm_sweden.jpg';
+_city.imgUrl = 'assets/images/cities/Stockholm_Sweden.jpg';
 
 // add city to array cities
 _cities.push(_city);
