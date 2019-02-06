@@ -175,7 +175,7 @@ _city.name = " Hong Kong, China";
 _city.word = "Hong Kong";
 _city.key = "HONGKONG";
 _city.description = "Hong Kong is impressive from many angles—beneath the towering skyscrapers, or from a ferry crossing Victoria Harbour—but you can see its finest side from the air. As your flight approaches the city, it feels like the mist parts and reveals Shangri-La, where hilly, verdant islands surround a concrete jungle. —Laura Dannen Redman";
-_city.imgUrl = 'assets/images/cities/hong-kong_China.jpg';
+_city.imgUrl = 'assets/images/cities/Hong-Kong_China.jpg';
 
 // add city to array cities
 _cities.push(_city);
@@ -325,7 +325,7 @@ _city.name = "Stockholm, Sweden";
 _city.word = "Stockholm";
 _city.key = "STOCKHOLM";
 _city.description = 'With its charming historic alleyways and a multitude of islands that lead many to dub it “the Venice of the north," Stockholm is one of the world’s most beautiful capitals. (It’s also the cultural, political, media, and economic center of Sweden.) —K.L.';
-_city.imgUrl = 'assets/images/cities/stockholm_sweden.jpg';
+_city.imgUrl = 'assets/images/cities/Stockholm_sweden.jpg';
 
 // add city to array cities
 _cities.push(_city);
